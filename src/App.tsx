@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Header from "./components/Header";
+
 import styles from "./App.module.css";
 
 import "./global.css";
@@ -10,7 +12,12 @@ const App = () => {
   return (
 
     <div>
-      <h1>Hello World!</h1>
+      <Header />
+      {/*
+      <div className={styles.task}>
+        <input type="text" />
+      </div>
+      */}
       {/*
       <button onClick={() => setCount((count) => count + 1)}>
         count is {count}
