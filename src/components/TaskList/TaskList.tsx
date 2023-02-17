@@ -1,10 +1,10 @@
 import Form from "../Form";
 
-import styles from "./Tasks.module.css";
+import styles from "./TaskList.module.css";
 
 import clipboard from "../../assets/clipboard.svg";
 
-export const Tasks = () => {
+export const TaskList = () => {
   return (
     <div className={styles.container}>
       <div>
