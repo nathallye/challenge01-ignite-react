@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import rocket from "../../assets/rocket.svg";
 import todoLogo from "../../assets/todo.svg";
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <img src={rocket} alt="Logotipo da Rocketseat" />
@@ -11,5 +11,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header;
