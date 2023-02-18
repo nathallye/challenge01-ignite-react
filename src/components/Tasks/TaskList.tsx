@@ -13,28 +13,22 @@ export const TaskList = () => {
   const [tasks, setTasks] = useState([
     {
       id: uuid(),
-      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+      done: false
     },
     {
       id: uuid(),
-      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+      done: true
     }
   ]);
-  const [newTask, setNewTask] = useState("");
 
-  const handleCreateNewTask = (event: FormEvent) => {
-    event.preventDefault();
-
+  const handleCreateNewTask = (descriptionNewTask: string) => {
     setTasks([...tasks, {
       id: uuid(),
-      description: newTask
+      description: descriptionNewTask,
+      done: false
     }])
-
-    setNewTask("");
-  }
-
-  const handleNewTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setNewTask(event.target.value);
   }
 
   const deleteTask = (idTaskToDelete: string) => {
@@ -50,7 +44,6 @@ export const TaskList = () => {
       <div>
         <Form
           onCreateNewTask={handleCreateNewTask}
-          onNewTaskChange={handleNewTaskChange}
         />
 
         <div className={styles.tasks}>
@@ -65,7 +58,7 @@ export const TaskList = () => {
             </div>
           </header>
 
-          { false &&
+          {tasks.length === 0 &&
             <div className={styles.content}>
               <img src={clipboard} alt="" />
               <p>Você ainda não tem tarefas cadastradas</p>
@@ -73,16 +66,18 @@ export const TaskList = () => {
             </div>
           }
 
-          {tasks.map((task) =>  {
-            return (
-              <Task
-                key={task.id}
-                id={task.id}
-                description={task.description}
-                onDeleteTask={deleteTask}
-              />
-            )
-          })}
+          {tasks.length !== 0 &&
+            tasks.map((task) =>  {
+              return (
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  description={task.description}
+                  onDeleteTask={deleteTask}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </div>
