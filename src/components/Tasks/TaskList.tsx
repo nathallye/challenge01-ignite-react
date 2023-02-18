@@ -1,3 +1,4 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import uuid from "react-uuid";
 
 import { Form } from "../Form";
@@ -7,28 +8,56 @@ import styles from "./TaskList.module.css";
 
 import clipboard from "../../assets/clipboard.svg";
 
-const tasks = [
-  {
-    id: uuid(),
-    description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
-  },
-  {
-    id: uuid(),
-    description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
-  }
-];
-
 export const TaskList = () => {
+
+  const [tasks, setTasks] = useState([
+    {
+      id: uuid(),
+      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+    },
+    {
+      id: uuid(),
+      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."
+    }
+  ]);
+  const [newTask, setNewTask] = useState("");
+
+  const handleCreateNewTask = (event: FormEvent) => {
+    event.preventDefault();
+
+    setTasks([...tasks, {
+      id: uuid(),
+      description: newTask
+    }])
+
+    setNewTask("");
+  }
+
+  const handleNewTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTask(event.target.value);
+  }
+
+  const deleteTask = (idTaskToDelete: string) => {
+    const tasksDeletingOne = tasks.filter((task) => {
+      return task.id !== idTaskToDelete;
+    })
+
+    setTasks(tasksDeletingOne);
+  }
+
   return (
     <div className={styles.container}>
       <div>
-        <Form />
+        <Form
+          onCreateNewTask={handleCreateNewTask}
+          onNewTaskChange={handleNewTaskChange}
+        />
 
         <div className={styles.tasks}>
           <header>
             <div className={styles.tasksCreated}>
               <span>Tarefas criadas</span>
-              <span>0</span>
+              <span>{tasks.length}</span>
             </div>
             <div className={styles.tasksCompleted}>
               <span>Concuídas</span>
@@ -50,6 +79,7 @@ export const TaskList = () => {
                 key={task.id}
                 id={task.id}
                 description={task.description}
+                onDeleteTask={deleteTask}
               />
             )
           })}

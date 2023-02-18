@@ -18,6 +18,8 @@
   width: 39.8rem;
   padding: 1rem;
   margin-right: 0.5rem;
+
+  color: var(--gray-100);
 }
 
 .taskForm button {
@@ -31,7 +33,7 @@
   border: 0;
   border-radius: 8px;
 
-  color: var(--white);
+  color: var(--gray-100);
   font-size: 0.875rem;
   font-weight: bold;
   cursor: pointer;

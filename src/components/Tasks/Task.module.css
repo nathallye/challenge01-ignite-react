@@ -1,15 +1,31 @@
 .task {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 
   background: var(--gray-400);
   border-radius: 8px;
 
+  width: 100%;
   padding: 1rem;
 }
 
 .task + .task {
   margin-top: 0.75rem;
+}
+
+.task button {
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  line-height: 0;
+
+  color: var(--gray-300);
+  cursor: pointer;
+}
+
+.task button:hover {
+  color: var(--ganger-500);
 }
 
 .task span {

@@ -4,7 +4,7 @@
   align-items: center;
 
   background: var(--gray-600);
-  padding: 0 22rem 49.81rem 22rem ;
+  padding: 0 22rem 49.81rem 22rem;
 }
 
 .tasks {
@@ -14,6 +14,8 @@
   flex-direction: column;
 
   margin-top: calc(4rem - 1.65rem);
+
+  color: var(--gray-100);
 }
 
 .tasks header {
