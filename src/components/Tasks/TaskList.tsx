@@ -13,17 +13,17 @@ export const TaskList = () => {
   const [tasks, setTasks] = useState([
     {
       id: uuid(),
-      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+      description: "Terminar desafio Ignite.",
       done: false
     },
     {
       id: uuid(),
-      description: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+      description: "Limpar caxinha da coco.",
       done: true
     }
   ]);
 
-  const handleCreateNewTask = (descriptionNewTask: string) => {
+  const createNewTaskHandler = (descriptionNewTask: string) => {
     setTasks([...tasks, {
       id: uuid(),
       description: descriptionNewTask,
@@ -31,7 +31,20 @@ export const TaskList = () => {
     }])
   }
 
-  const deleteTask = (idTaskToDelete: string) => {
+  const taskDoneHandler = (id: string, done: boolean) => {
+    const updatedTasks = [...tasks];
+
+    const taskIndex = tasks.findIndex((task) => {
+      return task.id === id;
+    })
+
+    const task = updatedTasks[taskIndex];
+    task.done = done;
+
+    setTasks(updatedTasks);
+  }
+
+  const deleteTaskHandler = (idTaskToDelete: string) => {
     const tasksDeletingOne = tasks.filter((task) => {
       return task.id !== idTaskToDelete;
     })
@@ -39,11 +52,15 @@ export const TaskList = () => {
     setTasks(tasksDeletingOne);
   }
 
+  const completedTasks = tasks.filter((task) => {
+    return task.done;
+  })
+
   return (
     <div className={styles.container}>
       <div>
         <Form
-          onCreateNewTask={handleCreateNewTask}
+          onCreateNewTask={createNewTaskHandler}
         />
 
         <div className={styles.tasks}>
@@ -54,7 +71,7 @@ export const TaskList = () => {
             </div>
             <div className={styles.tasksCompleted}>
               <span>Concuídas</span>
-              <span>0</span>
+              <span>{completedTasks.length} de {tasks.length}</span>
             </div>
           </header>
 
@@ -73,7 +90,9 @@ export const TaskList = () => {
                   key={task.id}
                   id={task.id}
                   description={task.description}
-                  onDeleteTask={deleteTask}
+                  onDeleteTask={deleteTaskHandler}
+                  done={task.done}
+                  onTaskDone={taskDoneHandler}
                 />
               )
             })

@@ -11,7 +11,7 @@ export const Form = ({ onCreateNewTask }: FormProps) => {
 
   const [newTaskDescription, setNewTaskDescription] = useState("");
 
-  const handleCreateNewTask = (event: FormEvent) => {
+  const createNewTaskHandler = (event: FormEvent) => {
     event.preventDefault();
 
     setNewTaskDescription("");
@@ -19,20 +19,20 @@ export const Form = ({ onCreateNewTask }: FormProps) => {
     onCreateNewTask(newTaskDescription);
   }
 
-  const handleNewTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const newTaskChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskDescription(event.target.value);
   }
 
   const isTaskDescriptionEmpty = newTaskDescription.length === 0;
 
   return (
-    <form onSubmit={handleCreateNewTask} className={styles.taskForm}>
+    <form onSubmit={createNewTaskHandler} className={styles.taskForm}>
       <input
         name="task"
         placeholder="Adicione uma nova tarefa"
         type="text"
         value={newTaskDescription}
-        onChange={handleNewTaskChange}
+        onChange={newTaskChangeHandler}
         required
       />
       <button type="submit" disabled={isTaskDescriptionEmpty}>

@@ -32,11 +32,13 @@
 
 .tasksCreated span:first-of-type {
   color: var(--blue-300);
+  font-size: 0.875rem;
   font-weight: bold;
 }
 
 .tasksCompleted span:first-of-type {
   color: var(--purple-300);
+  font-size: 0.875rem;
   font-weight: bold;
 }
 
@@ -44,10 +46,11 @@
 .tasksCompleted span:last-of-type {
   background: var(--gray-400);
 
-  border-radius: 100%;
+  border-radius: 30px;
   padding: 0.125rem 0.5rem;
 
   color: var(--gray-200);
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
