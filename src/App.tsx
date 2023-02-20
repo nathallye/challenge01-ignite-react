@@ -7,14 +7,11 @@ import styles from "./App.module.css";
 
 import "./global.css";
 
-const App = () => {
+export const App = () => {
   return (
-
     <div>
       <Header />
       <TaskList />
     </div>
-  )
-}
-
-export default App;
+  );
+};

@@ -11,18 +11,23 @@ interface TaskProps {
   onDeleteTask: (id: string) => void;
 }
 
-export const Task = ({ id, description, done, onTaskDone, onDeleteTask }: TaskProps) => {
-
+export const Task = ({
+  id,
+  description,
+  done,
+  onTaskDone,
+  onDeleteTask,
+}: TaskProps) => {
   const [taskDone, setTaskDone] = useState(done);
 
   const taskDoneHandler = () => {
     onTaskDone(id, !taskDone);
     setTaskDone(!taskDone);
-  } 
+  };
 
   const deleteTaskHandler = () => {
     onDeleteTask(id);
-  }
+  };
 
   return (
     <div className={styles.task}>
@@ -36,8 +41,8 @@ export const Task = ({ id, description, done, onTaskDone, onDeleteTask }: TaskPr
       <span className={taskDone ? styles.checked : ""}>{description}</span>
 
       <button onClick={deleteTaskHandler} title="Deletar tarefa">
-        <Trash size={20}/>
+        <Trash size={20} />
       </button>
     </div>
-  )
-}
+  );
+};

@@ -8,7 +8,6 @@ interface FormProps {
 }
 
 export const Form = ({ onCreateNewTask }: FormProps) => {
-
   const [newTaskDescription, setNewTaskDescription] = useState("");
 
   const createNewTaskHandler = (event: FormEvent) => {
@@ -17,11 +16,11 @@ export const Form = ({ onCreateNewTask }: FormProps) => {
     setNewTaskDescription("");
 
     onCreateNewTask(newTaskDescription);
-  }
+  };
 
   const newTaskChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskDescription(event.target.value);
-  }
+  };
 
   const isTaskDescriptionEmpty = newTaskDescription.length === 0;
 
@@ -36,8 +35,8 @@ export const Form = ({ onCreateNewTask }: FormProps) => {
         required
       />
       <button type="submit" disabled={isTaskDescriptionEmpty}>
-        Criar <PlusCircle size={16}/>
+        Criar <PlusCircle size={16} />
       </button>
     </form>
-  )
-}
+  );
+};

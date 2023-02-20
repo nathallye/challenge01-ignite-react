@@ -9,5 +9,5 @@ export const Header = () => {
       <img src={rocket} alt="Logotipo da Rocketseat" />
       <img src={todoLogo} alt="Logotipo do ToDo List" />
     </header>
-  )
-}
+  );
+};
