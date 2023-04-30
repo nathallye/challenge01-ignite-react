@@ -20,3 +20,7 @@ Apesar de serem poucas funcionalidades, você vai precisar relembrar conceitos c
 - Listas e chaves no ReactJS
 - Propriedades
 - Componentização
+
+<div align="center">
+  <img width="600" src="https://user-images.githubusercontent.com/86172286/235354722-b67f4973-86f8-4a5b-8390-a958078d7453.png">
+</div>
